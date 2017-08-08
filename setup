@@ -246,7 +246,7 @@ vgw_vpn () {
 	XML_FILE=/etc/cloudshroud/output
    
   # determine which region the user's VGW is in and then create a VPN to the VGW
-  declare -a REGIONS_ARRAY=( "us-east-1" "us-west-1" "us-west-2" "eu-west-2" "us-east-2" "ap-southeast-1" "ap-southeast-2" "ap-northeast-1" "ap-northeast-2" "sa-east-1" "eu-central-1" "ca-central-1" "ap-south-1" )
+  declare -a REGIONS_ARRAY=( "us-east-1" "us-west-1" "us-west-2" "eu-west-1" "eu-west-2" "us-east-2" "ap-southeast-1" "ap-southeast-2" "ap-northeast-1" "ap-northeast-2" "sa-east-1" "eu-central-1" "ca-central-1" "ap-south-1" )
   
   for region in ${REGIONS_ARRAY[@]}; do
 	if [ "$(aws ec2 describe-vpn-gateways --filters Name=vpn-gateway-id,Values=${VGWCONNECT} --region ${region} --output text | awk 'NR==1{print $2}')" == "available" ]
